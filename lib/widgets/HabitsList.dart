@@ -15,10 +15,41 @@ class HabitsList extends StatelessWidget {
       category: CategoryConstants.music,  // Categoria de música
     ),
     Habit(
-      name: "Ler um livro",
-      description: "Ler 20 páginas por dia",
-      category: CategoryConstants.tech,  // Categoria de tecnologia
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
     ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra 1 hora por dia",
+      category: CategoryConstants.music,  // Categoria de música
+    ),
+    
     // Adicione mais hábitos conforme necessário
   ];
 
