@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/screens/MainScreen.dart';
+import 'package:health_habit/widgets/AppDrawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,11 +9,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
- 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(appBar: AppBar(title: Text("Habits")), body:  MainScreen()),
+      home: Scaffold(appBar: AppBar(title: Text("Habits")), drawer: Drawer(child: AppDrawer()) , body: MainScreen()),
     );
   }
 }
