@@ -39,11 +39,11 @@ class ActivitiesList extends StatelessWidget {
         return ListTile(
           leading: activities[index].category.icon,
           title: Text(activities[index].name),
-          subtitle: activities[index] is Task ? Text("Task") : Text("Habit"),
-          trailing: Icon(Icons.check_box_outline_blank),
+          subtitle: activities[index] is Task ? const Text("Task") : const Text("Habit"),
+          trailing: const Icon(Icons.check_box_outline_blank),
         );
       },
-      separatorBuilder: (context, index) => Divider(color: Colors.black,),
+      separatorBuilder: (context, index) => const Divider(color: Colors.black,),
     );
   }
 }

@@ -5,6 +5,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("AppDrawer"));
+    return const Center(child: Text("AppDrawer"));
   }
 }

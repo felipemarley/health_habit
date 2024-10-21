@@ -4,21 +4,21 @@ import 'package:health_habit/models/Category.dart';
 class CategoryConstants {
   static final Category sports = Category(
     name: 'Esportes',
-    icon: Icon(Icons.sports),
+    icon: const Icon(Icons.sports),
   );
 
   static final Category music = Category(
     name: 'Música',
-    icon: Icon(Icons.music_note),
+    icon: const Icon(Icons.music_note),
   );
 
   static final Category tech = Category(
     name: 'Tecnologia',
-    icon: Icon(Icons.computer),
+    icon: const Icon(Icons.computer),
   );
   static final Category task = Category(
     name: 'Tarefa',
-    icon: Icon(Icons.task),
+    icon: const Icon(Icons.task),
   );
 
 }

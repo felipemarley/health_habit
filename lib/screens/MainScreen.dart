@@ -18,8 +18,8 @@ class _MainScreenState extends State<MainScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-            Text("Adicionar atividade"),
-            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add))
+            const Text("Adicionar atividade"),
+            FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add))
           ])),
     ]);
   }

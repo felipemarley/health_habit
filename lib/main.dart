@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(appBar: AppBar(title: Text("Habits")), drawer: Drawer(child: AppDrawer()) , body: MainScreen()),
+      home: Scaffold(appBar: AppBar(title: const Text("Habits")), drawer: const Drawer(child: AppDrawer()) , body: const MainScreen()),
     );
   }
 }
