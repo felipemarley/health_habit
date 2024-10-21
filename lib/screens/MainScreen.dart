@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_habit/widgets/HabitsList.dart';
+import 'package:health_habit/widgets/ActivitiesList.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -12,13 +12,13 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Expanded(flex: 8, child: HabitsList()),
+      Expanded(flex: 8, child: ActivitiesList()),
       Expanded(
-          flex: 1,
+          flex: 2,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-            Text("Adicionar hábito"),
+            Text("Adicionar atividade"),
             FloatingActionButton(onPressed: () {}, child: Icon(Icons.add))
           ])),
     ]);

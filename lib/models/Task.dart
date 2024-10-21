@@ -1,11 +1,11 @@
 import 'package:health_habit/models/Activity.dart';
 import 'package:health_habit/models/Category.dart';
 
-class Habit extends Activity {
+class Task extends Activity {
 
-  Habit({
+  Task({
     required String name,
     String? description,
     required category,
-  }) : super(name: name, description: description, category: category); 
+  }) : super(name: name, description: description, category: category);
 }

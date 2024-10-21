@@ -16,5 +16,9 @@ class CategoryConstants {
     name: 'Tecnologia',
     icon: Icon(Icons.computer),
   );
+  static final Category task = Category(
+    name: 'Tarefa',
+    icon: Icon(Icons.task),
+  );
 
 }
