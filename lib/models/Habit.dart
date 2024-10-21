@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class Habit {
   final String habitId; 
   final String name;
@@ -6,15 +8,14 @@ class Habit {
   final DateTime creationDate; 
 
   Habit({
-    required this.habitId,
     required this.name,
     required this.description,
     required this.frequency,
     required this.creationDate,
-  });
+  }) : habitId = const Uuid().v4();
 
   @override
   String toString() {
-    return 'Habit(id: \$habitId, name: \$name, description: \$description, frequency: \$frequency, creationDate: \$creationDate)';
+    return 'Habit(id: $habitId, name: $name, description: $description, frequency: $frequency, creationDate: $creationDate)';
   }
 }

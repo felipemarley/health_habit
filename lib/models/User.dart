@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class User {
   final String userId; // ID of the user
   final String name; // Name of the user
@@ -6,14 +8,13 @@ class User {
 
 
   User({
-    this.userId = '',
     required this.name,
     required this.email,
     required this.password,
-  });
+  }) : userId = const Uuid().v4();
 
   @override
   String toString() {
-    return 'User(name: \$name, email: \$email, password: [HIDDEN])';
+    return '[ID: $userId] User(name: $name, email: $email, password: [HIDDEN])';
   }
 }
