@@ -4,9 +4,9 @@ import 'package:health_habit/models/Habit.dart';
 import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
+import 'package:health_habit/widgets/CategoryIconBadge.dart';
 
 class ActivitiesList extends StatefulWidget {
-
   ActivitiesList({super.key});
 
   @override
@@ -18,12 +18,12 @@ class _ActivitiesListState extends State<ActivitiesList> {
     Habit(
       name: "Ir à academia",
       description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports,  // Exemplo de categoria
+      category: CategoryConstants.sports, // Exemplo de categoria
     ),
     Task(
       name: "Entregar relatório",
       description: "Relatório de progresso",
-      category: CategoryConstants.task,  // Exemplo de categoria
+      category: CategoryConstants.task, // Exemplo de categoria
     ),
     Habit(
       name: "Aprender guitarra",
@@ -56,21 +56,53 @@ class _ActivitiesListState extends State<ActivitiesList> {
       itemCount: activities.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {onActivityTap(activities[index]);},
-          
+          onTap: () {
+            onActivityTap(activities[index]);
+          },
           child: ListTile(
-            leading: activities[index].category.icon,
+            leading: const CategoryIconBadge(badgeText: 'teste', backgroundColor: Colors.blue, icon: Icon(Icons.abc)),
             title: Text(activities[index].name),
-            subtitle: activities[index] is Task ? const Text("Task") : const Text("Habit"),
+            subtitle: activities[index] is Task
+                ? Align(alignment: Alignment.centerLeft, child: Badge(badgeText: 'Task', backgroundColor: Colors.blue))
+                : Align(alignment: Alignment.centerLeft, child: Badge(badgeText: 'Habit', backgroundColor: Colors.green)),
             trailing: activities[index].status == ActivityStatus.pending
-                ? const Icon(Icons.check_box_outline_blank)
+                ? Icon(Icons.check_box_outline_blank)
                 : activities[index].status == ActivityStatus.completed
-                    ? const Icon(Icons.check_box)
-                    : const Icon(Icons.cancel),
+                    ? Icon(Icons.check_box)
+                    : Icon(Icons.cancel),
           ),
         );
       },
-      separatorBuilder: (context, index) => const Divider(color: Colors.black,),
+      separatorBuilder: (context, index) => const Divider(
+        color: Colors.black,
+      ),
+    );
+  }
+}
+
+class Badge extends StatelessWidget {
+  final String badgeText;
+  final Color backgroundColor;
+  
+  const Badge({super.key, required this.badgeText, required this.backgroundColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2), // Minimal padding around the text
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(4), // Gives it a rounded shape
+      ),
+      child: Text(
+        badgeText,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
