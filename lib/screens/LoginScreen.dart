@@ -5,6 +5,17 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Authentication'),
+      ),
+      body: Center(
+          child: ElevatedButton(
+        onPressed: () => {
+          Navigator.pushNamed(context, '/habits'),
+        },
+        child: const Text("Logar"),
+      )),
+    );
   }
 }
