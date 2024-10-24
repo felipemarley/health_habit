@@ -4,6 +4,7 @@ import 'package:health_habit/models/Habit.dart';
 import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
+import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
 
 class ActivitiesList extends StatefulWidget {
@@ -60,6 +61,13 @@ class _ActivitiesListState extends State<ActivitiesList> {
           return GestureDetector(
             onTap: () {
               onActivityTap(activities[index]);
+            },
+            onLongPress: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (_) {
+                    return ActivityModal(activity: activities[index]);
+                  });
             },
             child: ListTile(
               leading: const CategoryIconBadge(
