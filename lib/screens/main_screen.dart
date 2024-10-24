@@ -30,6 +30,12 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(title: const Text("Habits")),
       drawer: const Drawer(child: AppDrawer()),
       body: _screens[_selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/edit');
+        },
+        child: const Icon(Icons.add),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => _onBottomMenuItemTap(index),

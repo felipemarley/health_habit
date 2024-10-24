@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/models/Activity.dart';
 import 'package:health_habit/models/Habit.dart';
-import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
 import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
+import 'package:health_habit/constants/CategoryConstants.dart';
+import 'package:health_habit/constants/mocked_activities.dart';
 
 class ActivitiesList extends StatefulWidget {
   ActivitiesList({super.key});
@@ -15,29 +16,6 @@ class ActivitiesList extends StatefulWidget {
 }
 
 class _ActivitiesListState extends State<ActivitiesList> {
-  final List<Activity> activities = [
-    Habit(
-      name: "Ir à academia",
-      description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports, // Exemplo de categoria
-    ),
-    Task(
-      name: "Entregar relatório",
-      description: "Relatório de progresso",
-      category: CategoryConstants.task, // Exemplo de categoria
-    ),
-    Habit(
-      name: "Aprender guitarra",
-      description: "Praticar guitarra por 1 hora todos os dias",
-      category: CategoryConstants.music,
-    ),
-    Task(
-      name: "Comprar presentes",
-      description: "Comprar presentes de aniversário",
-      category: CategoryConstants.task,
-    ),
-  ];
-
   onActivityTap(Activity activity) {
     if (activity.status == ActivityStatus.pending) {
       activity.status = ActivityStatus.completed;
