@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class FormScreen extends StatelessWidget {
+  const FormScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Authentication'),
+        title: const Text('Form'),
       ),
       body: Center(
           child: ElevatedButton(
         onPressed: () => {
-          Navigator.pushNamed(context, '/habits'),
+          Navigator.pushNamed(context, '/main'),
         },
-        child: const Text("Logar"),
+        child: const Text("Form"),
       )),
     );
   }

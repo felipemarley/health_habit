@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:health_habit/screens/LoginScreen.dart';
-import 'package:health_habit/screens/MainScreen.dart';
-import 'package:health_habit/widgets/AppDrawer.dart';
+import 'package:health_habit/screens/login_screen.dart';
+import 'package:health_habit/screens/main_screen.dart';
+import 'package:health_habit/screens/form_screen.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     '/': (BuildContext context) => LoginScreen(),
-    '/habits': (BuildContext context) => MainScreen()
+    '/main': (BuildContext context) => MainScreen(),
+    '/edit': (BuildContext context) => FormScreen()
   };
 }
