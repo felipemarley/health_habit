@@ -4,6 +4,7 @@ class Habit extends Activity {
   Habit({
     required super.name,
     super.description,
-    required category,
-  }) : super(category: category); 
+    required super.category,
+    super.status
+  }); 
 }
