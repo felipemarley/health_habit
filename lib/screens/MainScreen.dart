@@ -10,26 +10,38 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+
+  List<Widget> _screens = [
+    ActivitiesList(),
+    const Text('Hábitos'),
+    const Text('Tarefas'),
+  ];
+
+  void _onBottomMenuItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Habits")),
       drawer: const Drawer(child: AppDrawer()),
-      body: Column(children: [
-        Expanded(flex: 8, child: ActivitiesList()),
-        Expanded(
-            flex: 2,
-            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              const Text("Adicionar atividade"),
-              FloatingActionButton(
-                  onPressed: () {}, child: const Icon(Icons.add)),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Logout'))
-            ])),
-      ]),
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => _onBottomMenuItemTap(index),
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home), label: 'Hoje', backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.restart_alt), label: 'Hábitos', backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.task_alt), label: 'Tarefas', backgroundColor: Colors.blue),
+        ],
+      ),
     );
   }
 }
