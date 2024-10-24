@@ -34,8 +34,11 @@ class _ActivitiesListState extends State<ActivitiesList> {
     return Column(children: [
       Expanded(
           child: ListView.separated(
-        itemCount: activities.length,
+        itemCount: activities.length + 1,
         itemBuilder: (context, index) {
+          if (index == activities.length) {
+            return SizedBox(height: 80); // Height of the FAB + some padding
+          }
           return GestureDetector(
             onTap: () {
               onActivityTap(activities[index]);
@@ -54,19 +57,19 @@ class _ActivitiesListState extends State<ActivitiesList> {
                   icon: Icon(Icons.abc)),
               title: Text(activities[index].name),
               subtitle: activities[index] is Task
-                  ? Align(
+                  ? const Align(
                       alignment: Alignment.centerLeft,
                       child: Badge(
                           badgeText: 'Task', backgroundColor: Colors.blue))
-                  : Align(
+                  : const Align(
                       alignment: Alignment.centerLeft,
                       child: Badge(
                           badgeText: 'Habit', backgroundColor: Colors.green)),
               trailing: activities[index].status == ActivityStatus.pending
-                  ? Icon(Icons.check_box_outline_blank)
+                  ? const Icon(Icons.check_box_outline_blank)
                   : activities[index].status == ActivityStatus.completed
-                      ? Icon(Icons.check_box)
-                      : Icon(Icons.cancel),
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.cancel),
             ),
           );
         },
@@ -88,7 +91,7 @@ class Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           horizontal: 4, vertical: 2), // Minimal padding around the text
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -96,7 +99,7 @@ class Badge extends StatelessWidget {
       ),
       child: Text(
         badgeText,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 11,
           fontWeight: FontWeight.w500,
