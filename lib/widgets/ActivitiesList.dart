@@ -7,6 +7,7 @@ import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
 import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/constants/mocked_activities.dart';
+import 'package:health_habit/widgets/HorizontalDatePicker.dart';
 
 class ActivitiesList extends StatefulWidget {
   ActivitiesList({super.key});
@@ -32,6 +33,7 @@ class _ActivitiesListState extends State<ActivitiesList> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      HorizontalDatePicker(),
       Expanded(
           child: ListView.separated(
         itemCount: activities.length + 1,
