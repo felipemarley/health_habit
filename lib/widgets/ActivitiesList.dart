@@ -35,6 +35,66 @@ class _ActivitiesListState extends State<ActivitiesList> {
       description: "Comprar presentes de aniversário",
       category: CategoryConstants.task,
     ),
+    Habit(
+      name: "Ir à academia",
+      description: "Ir à academia 3 vezes por semana",
+      category: CategoryConstants.sports, // Exemplo de categoria
+    ),
+    Task(
+      name: "Entregar relatório",
+      description: "Relatório de progresso",
+      category: CategoryConstants.task, // Exemplo de categoria
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra por 1 hora todos os dias",
+      category: CategoryConstants.music,
+    ),
+    Task(
+      name: "Comprar presentes",
+      description: "Comprar presentes de aniversário",
+      category: CategoryConstants.task,
+    ),
+    Habit(
+      name: "Ir à academia",
+      description: "Ir à academia 3 vezes por semana",
+      category: CategoryConstants.sports, // Exemplo de categoria
+    ),
+    Task(
+      name: "Entregar relatório",
+      description: "Relatório de progresso",
+      category: CategoryConstants.task, // Exemplo de categoria
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra por 1 hora todos os dias",
+      category: CategoryConstants.music,
+    ),
+    Task(
+      name: "Comprar presentes",
+      description: "Comprar presentes de aniversário",
+      category: CategoryConstants.task,
+    ),
+    Habit(
+      name: "Ir à academia",
+      description: "Ir à academia 3 vezes por semana",
+      category: CategoryConstants.sports, // Exemplo de categoria
+    ),
+    Task(
+      name: "Entregar relatório",
+      description: "Relatório de progresso",
+      category: CategoryConstants.task, // Exemplo de categoria
+    ),
+    Habit(
+      name: "Aprender guitarra",
+      description: "Praticar guitarra por 1 hora todos os dias",
+      category: CategoryConstants.music,
+    ),
+    Task(
+      name: "Comprar presentes",
+      description: "Comprar presentes de aniversário",
+      category: CategoryConstants.task,
+    ),
   ];
 
   onActivityTap(Activity activity) {
@@ -60,11 +120,20 @@ class _ActivitiesListState extends State<ActivitiesList> {
             onActivityTap(activities[index]);
           },
           child: ListTile(
-            leading: const CategoryIconBadge(badgeText: 'teste', backgroundColor: Colors.blue, icon: Icon(Icons.abc)),
+            leading: const CategoryIconBadge(
+                badgeText: 'teste',
+                backgroundColor: Colors.blue,
+                icon: Icon(Icons.abc)),
             title: Text(activities[index].name),
             subtitle: activities[index] is Task
-                ? Align(alignment: Alignment.centerLeft, child: Badge(badgeText: 'Task', backgroundColor: Colors.blue))
-                : Align(alignment: Alignment.centerLeft, child: Badge(badgeText: 'Habit', backgroundColor: Colors.green)),
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child:
+                        Badge(badgeText: 'Task', backgroundColor: Colors.blue))
+                : Align(
+                    alignment: Alignment.centerLeft,
+                    child: Badge(
+                        badgeText: 'Habit', backgroundColor: Colors.green)),
             trailing: activities[index].status == ActivityStatus.pending
                 ? Icon(Icons.check_box_outline_blank)
                 : activities[index].status == ActivityStatus.completed
@@ -83,13 +152,15 @@ class _ActivitiesListState extends State<ActivitiesList> {
 class Badge extends StatelessWidget {
   final String badgeText;
   final Color backgroundColor;
-  
-  const Badge({super.key, required this.badgeText, required this.backgroundColor});
+
+  const Badge(
+      {super.key, required this.badgeText, required this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2), // Minimal padding around the text
+      padding: EdgeInsets.symmetric(
+          horizontal: 4, vertical: 2), // Minimal padding around the text
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(4), // Gives it a rounded shape

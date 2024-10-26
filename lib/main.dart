@@ -4,6 +4,7 @@ import 'package:health_habit/screens/PickCategoryScreen.dart';
 import 'package:health_habit/widgets/AppDrawer.dart';
 
 void main() {
+  debugPrint("App started");
   runApp(const MyApp());
 }
 
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(appBar: AppBar(title: const Text("Habits")), drawer: const Drawer(child: AppDrawer()) , body: const PickCategoryScreen()),
+      home: Scaffold(
+          appBar: AppBar(title: const Text("Habits")),
+          drawer: const Drawer(child: AppDrawer()),
+          body: const PickCategoryScreen()),
     );
   }
 }
