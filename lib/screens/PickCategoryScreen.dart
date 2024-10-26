@@ -9,13 +9,14 @@ class PickCategoryScreen extends StatelessWidget {
     final List<Category> categories = [
       CategoryConstants.sports,
       CategoryConstants.esports,
+      CategoryConstants.badHabit,
       CategoryConstants.gym,
       CategoryConstants.music,
       CategoryConstants.tech,
       CategoryConstants.alarm,
       CategoryConstants.chill,
       CategoryConstants.sleep,
-      CategoryConstants.bus_time,
+      CategoryConstants.busTime,
       CategoryConstants.birthday,
       CategoryConstants.task,
     ];

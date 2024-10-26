@@ -12,6 +12,11 @@ class CategoryConstants {
     icon: const Icon(Icons.sports_esports),
   );
 
+  static final Category badHabit = Category(
+    name: "Largue um mau hábito",
+    icon: const Icon(Icons.block),
+  );
+
    static final Category gym = Category(
     name: 'Academia',
     icon: const Icon(Icons.fitness_center),
@@ -42,7 +47,7 @@ class CategoryConstants {
      icon: const Icon(Icons.bedtime),
   ) ; 
 
-  static final Category bus_time = Category(
+  static final Category busTime = Category(
     name: "Pegar o Ônibus",
     icon: const Icon(Icons.bus_alert),
     );
