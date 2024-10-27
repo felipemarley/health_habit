@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/models/Activity.dart';
-import 'package:health_habit/models/Habit.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
 import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
-import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/widgets/HorizontalDatePicker.dart';
 
 import 'package:health_habit/constants/mocked_activities.dart'; // ATIVIDADES ESTÃO AQUI <---

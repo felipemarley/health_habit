@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/models/Activity.dart';
 import 'package:health_habit/models/Habit.dart';
+import 'package:health_habit/models/Task.dart';
 
 class ActivityModal extends StatelessWidget {
   final Activity activity;
@@ -16,12 +17,24 @@ class ActivityModal extends StatelessWidget {
           Text(activity is Habit ? "Habit" : "Task"),
           Text(activity.name),
           ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/edit');
-
-              },
-              child: Text("Editar")),
+            onPressed: () {
+              Navigator.of(context).pop();
+              if (activity is Habit) {
+                Navigator.pushNamed(
+                  context,
+                  '/habit-form',
+                  arguments: activity,
+                );
+              } else if (activity is Task) {
+                Navigator.pushNamed(
+                  context,
+                  '/task-form',
+                  arguments: activity,
+                );
+              }
+            },
+            child: Text("Editar"),
+          ),
         ],
       ),
     );
