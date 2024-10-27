@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'routes.dart';
 
 void main() {
+  debugPrint("App started");
   runApp(const MyApp());
 }
 
