@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HorizontalDatePicker extends StatefulWidget {
-  HorizontalDatePicker({super.key});
+  final void Function(DateTime) onDatePick;
+  HorizontalDatePicker({super.key, required this.onDatePick});
 
   @override
   State<HorizontalDatePicker> createState() => _HorizontalDatePickerState();
@@ -10,7 +11,8 @@ class HorizontalDatePicker extends StatefulWidget {
 class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
   int _selectedIndex = 3;
 
-  void _onDateSelected(int index) {
+  void _onDateSelected(int index, {DateTime? date}) {
+    widget.onDatePick(date ?? DateTime.now().add(Duration(days: index - 3)));
     setState(() {
       _selectedIndex = index;
     });
