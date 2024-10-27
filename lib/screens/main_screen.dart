@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/widgets/ActivitiesList.dart';
 import 'package:health_habit/widgets/AppDrawer.dart';
+import 'package:health_habit/widgets/CreateActivityModal.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -32,7 +33,11 @@ class _MainScreenState extends State<MainScreen> {
       body: _screens[_selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/edit');
+          showModalBottomSheet(
+              context: context,
+              builder: (_) {
+                return const CreateActivityModal();
+              });
         },
         child: const Icon(Icons.add),
       ),
@@ -41,11 +46,17 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (index) => _onBottomMenuItemTap(index),
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home), label: 'Hoje', backgroundColor: Colors.blue),
+              icon: Icon(Icons.home),
+              label: 'Hoje',
+              backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.restart_alt), label: 'Hábitos', backgroundColor: Colors.blue),
+              icon: Icon(Icons.restart_alt),
+              label: 'Hábitos',
+              backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.task_alt), label: 'Tarefas', backgroundColor: Colors.blue),
+              icon: Icon(Icons.task_alt),
+              label: 'Tarefas',
+              backgroundColor: Colors.blue),
         ],
       ),
     );
