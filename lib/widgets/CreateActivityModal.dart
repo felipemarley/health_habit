@@ -5,7 +5,7 @@ class CreateActivityModal extends StatelessWidget {
 
   void goToHabitForm(BuildContext context) {
     Navigator.of(context).pop();
-    Navigator.of(context).pushNamed('/habit-form');
+    Navigator.of(context).pushNamed('/pick-habit-category');
   }
 
   void goToTaskForm(BuildContext context) {

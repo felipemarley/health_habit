@@ -47,7 +47,7 @@ class _PickCategoryScreenState extends State<PickCategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Escolha uma Categoria para sua Atividade'),
+        title: const Text('Escolha uma Categoria para sua Atividade', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
       ),
       body: Column(
         children: [
@@ -57,8 +57,8 @@ class _PickCategoryScreenState extends State<PickCategoryScreen> {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 6,
+                  mainAxisSpacing: 6,
                   childAspectRatio: 3,
                 ),
                 itemCount: categories.length,
