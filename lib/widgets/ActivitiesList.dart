@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/models/Activity.dart';
 import 'package:health_habit/models/Habit.dart';
-import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
+import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
+import 'package:health_habit/constants/CategoryConstants.dart';
+import 'package:health_habit/widgets/HorizontalDatePicker.dart';
+import 'package:health_habit/constants/mocked_activities.dart'; // ATIVIDADES AQUI <---
 
 class ActivitiesList extends StatefulWidget {
   ActivitiesList({super.key});
@@ -14,89 +17,6 @@ class ActivitiesList extends StatefulWidget {
 }
 
 class _ActivitiesListState extends State<ActivitiesList> {
-  final List<Activity> activities = [
-    Habit(
-      name: "Ir à academia",
-      description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports, // Exemplo de categoria
-    ),
-    Task(
-      name: "Entregar relatório",
-      description: "Relatório de progresso",
-      category: CategoryConstants.task, // Exemplo de categoria
-    ),
-    Habit(
-      name: "Aprender guitarra",
-      description: "Praticar guitarra por 1 hora todos os dias",
-      category: CategoryConstants.music,
-    ),
-    Task(
-      name: "Comprar presentes",
-      description: "Comprar presentes de aniversário",
-      category: CategoryConstants.task,
-    ),
-    Habit(
-      name: "Ir à academia",
-      description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports, // Exemplo de categoria
-    ),
-    Task(
-      name: "Entregar relatório",
-      description: "Relatório de progresso",
-      category: CategoryConstants.task, // Exemplo de categoria
-    ),
-    Habit(
-      name: "Aprender guitarra",
-      description: "Praticar guitarra por 1 hora todos os dias",
-      category: CategoryConstants.music,
-    ),
-    Task(
-      name: "Comprar presentes",
-      description: "Comprar presentes de aniversário",
-      category: CategoryConstants.task,
-    ),
-    Habit(
-      name: "Ir à academia",
-      description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports, // Exemplo de categoria
-    ),
-    Task(
-      name: "Entregar relatório",
-      description: "Relatório de progresso",
-      category: CategoryConstants.task, // Exemplo de categoria
-    ),
-    Habit(
-      name: "Aprender guitarra",
-      description: "Praticar guitarra por 1 hora todos os dias",
-      category: CategoryConstants.music,
-    ),
-    Task(
-      name: "Comprar presentes",
-      description: "Comprar presentes de aniversário",
-      category: CategoryConstants.task,
-    ),
-    Habit(
-      name: "Ir à academia",
-      description: "Ir à academia 3 vezes por semana",
-      category: CategoryConstants.sports, // Exemplo de categoria
-    ),
-    Task(
-      name: "Entregar relatório",
-      description: "Relatório de progresso",
-      category: CategoryConstants.task, // Exemplo de categoria
-    ),
-    Habit(
-      name: "Aprender guitarra",
-      description: "Praticar guitarra por 1 hora todos os dias",
-      category: CategoryConstants.music,
-    ),
-    Task(
-      name: "Comprar presentes",
-      description: "Comprar presentes de aniversário",
-      category: CategoryConstants.task,
-    ),
-  ];
-
   onActivityTap(Activity activity) {
     if (activity.status == ActivityStatus.pending) {
       activity.status = ActivityStatus.completed;
@@ -112,40 +32,54 @@ class _ActivitiesListState extends State<ActivitiesList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: activities.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            onActivityTap(activities[index]);
-          },
-          child: ListTile(
-            leading: const CategoryIconBadge(
-                badgeText: 'teste',
-                backgroundColor: Colors.blue,
-                icon: Icon(Icons.abc)),
-            title: Text(activities[index].name),
-            subtitle: activities[index] is Task
-                ? Align(
-                    alignment: Alignment.centerLeft,
-                    child:
-                        Badge(badgeText: 'Task', backgroundColor: Colors.blue))
-                : Align(
-                    alignment: Alignment.centerLeft,
-                    child: Badge(
-                        badgeText: 'Habit', backgroundColor: Colors.green)),
-            trailing: activities[index].status == ActivityStatus.pending
-                ? Icon(Icons.check_box_outline_blank)
-                : activities[index].status == ActivityStatus.completed
-                    ? Icon(Icons.check_box)
-                    : Icon(Icons.cancel),
-          ),
-        );
-      },
-      separatorBuilder: (context, index) => const Divider(
-        color: Colors.black,
-      ),
-    );
+    return Column(children: [
+      HorizontalDatePicker(),
+      Expanded(
+          child: ListView.separated(
+        itemCount: activities.length + 1,
+        itemBuilder: (context, index) {
+          if (index == activities.length) {
+            return SizedBox(height: 80); // Height of the FAB + some padding
+          }
+          return GestureDetector(
+            onTap: () {
+              onActivityTap(activities[index]);
+            },
+            onLongPress: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (_) {
+                    return ActivityModal(activity: activities[index]);
+                  });
+            },
+            child: ListTile(
+              leading: const CategoryIconBadge(
+                  badgeText: 'teste',
+                  backgroundColor: Colors.blue,
+                  icon: Icon(Icons.abc)),
+              title: Text(activities[index].name),
+              subtitle: activities[index] is Task
+                  ? const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Badge(
+                          badgeText: 'Task', backgroundColor: Colors.blue))
+                  : const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Badge(
+                          badgeText: 'Habit', backgroundColor: Colors.green)),
+              trailing: activities[index].status == ActivityStatus.pending
+                  ? const Icon(Icons.check_box_outline_blank)
+                  : activities[index].status == ActivityStatus.completed
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.cancel),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => const Divider(
+          color: Colors.black,
+        ),
+      )),
+    ]);
   }
 }
 
@@ -159,15 +93,14 @@ class Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: 4, vertical: 2), // Minimal padding around the text
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2), // Minimal padding around the text
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(4), // Gives it a rounded shape
       ),
       child: Text(
         badgeText,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 11,
           fontWeight: FontWeight.w500,
