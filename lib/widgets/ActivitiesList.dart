@@ -7,7 +7,8 @@ import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
 import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/widgets/HorizontalDatePicker.dart';
-import 'package:health_habit/constants/mocked_activities.dart'; // ATIVIDADES AQUI <---
+
+import 'package:health_habit/constants/mocked_activities.dart'; // ATIVIDADES ESTÃO AQUI <---
 
 class ActivitiesList extends StatefulWidget {
   ActivitiesList({super.key});
@@ -17,6 +18,8 @@ class ActivitiesList extends StatefulWidget {
 }
 
 class _ActivitiesListState extends State<ActivitiesList> {
+  List<Activity> _filteredActivities = activities; // ATIVIDADES ESTÃO AQUI <---
+
   onActivityTap(Activity activity) {
     if (activity.status == ActivityStatus.pending) {
       activity.status = ActivityStatus.completed;
@@ -30,26 +33,54 @@ class _ActivitiesListState extends State<ActivitiesList> {
     });
   }
 
+  void filterByDate(DateTime date) {
+    print("Filtering by date: $date");
+    var results = activities.where((activity) {
+      if (activity is Habit) {
+        print("${activity.name},${activity.startDate}");
+        return activity.scheduledDates
+            .any((scheduledDate) => scheduledDate.day == date.day && scheduledDate.month == date.month && scheduledDate.year == date.year);
+      }
+      if (activity is Task) {
+        print("${activity.name},${activity.date}");
+        return activity.date.day == date.day && activity.date.month == date.month && activity.date.year == date.year;
+      }
+      return false; // Exclude non-Habit activities since they don't have active dates
+    }).toList();
+
+    setState(() {
+      _filteredActivities = results;
+    }); 
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    filterByDate(DateTime.now());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      HorizontalDatePicker(),
+      HorizontalDatePicker(
+        onDatePick: filterByDate,
+      ),
       Expanded(
           child: ListView.separated(
-        itemCount: activities.length + 1,
+        itemCount: _filteredActivities.length + 1,
         itemBuilder: (context, index) {
-          if (index == activities.length) {
+          if (index == _filteredActivities.length) {
             return SizedBox(height: 80); // Height of the FAB + some padding
           }
           return GestureDetector(
             onTap: () {
-              onActivityTap(activities[index]);
+              onActivityTap(_filteredActivities[index]);
             },
             onLongPress: () {
               showModalBottomSheet(
                   context: context,
                   builder: (_) {
-                    return ActivityModal(activity: activities[index]);
+                    return ActivityModal(activity: _filteredActivities[index]);
                   });
             },
             child: ListTile(
@@ -57,8 +88,8 @@ class _ActivitiesListState extends State<ActivitiesList> {
                   badgeText: 'teste',
                   backgroundColor: Colors.blue,
                   icon: Icon(Icons.abc)),
-              title: Text(activities[index].name),
-              subtitle: activities[index] is Task
+              title: Text(_filteredActivities[index].name),
+              subtitle: _filteredActivities[index] is Task
                   ? const Align(
                       alignment: Alignment.centerLeft,
                       child: Badge(
@@ -67,11 +98,13 @@ class _ActivitiesListState extends State<ActivitiesList> {
                       alignment: Alignment.centerLeft,
                       child: Badge(
                           badgeText: 'Habit', backgroundColor: Colors.green)),
-              trailing: activities[index].status == ActivityStatus.pending
-                  ? const Icon(Icons.check_box_outline_blank)
-                  : activities[index].status == ActivityStatus.completed
-                      ? const Icon(Icons.check_box)
-                      : const Icon(Icons.cancel),
+              trailing:
+                  _filteredActivities[index].status == ActivityStatus.pending
+                      ? const Icon(Icons.check_box_outline_blank)
+                      : _filteredActivities[index].status ==
+                              ActivityStatus.completed
+                          ? const Icon(Icons.check_box)
+                          : const Icon(Icons.cancel),
             ),
           );
         },
@@ -93,7 +126,8 @@ class Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2), // Minimal padding around the text
+      padding: const EdgeInsets.symmetric(
+          horizontal: 4, vertical: 2), // Minimal padding around the text
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(4), // Gives it a rounded shape
