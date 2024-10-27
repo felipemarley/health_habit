@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:health_habit/models/Activity.dart';
-import 'package:health_habit/models/Habit.dart';
 import 'package:health_habit/models/Task.dart';
 import 'package:health_habit/models/enums/ActivityStatus.dart';
 import 'package:health_habit/widgets/ActivityModal.dart';
 import 'package:health_habit/widgets/CategoryIconBadge.dart';
-import 'package:health_habit/constants/CategoryConstants.dart';
 import 'package:health_habit/widgets/HorizontalDatePicker.dart';
 import 'package:health_habit/constants/mocked_activities.dart'; // ATIVIDADES AQUI <---
 
@@ -93,7 +91,8 @@ class Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2), // Minimal padding around the text
+      padding: const EdgeInsets.symmetric(
+          horizontal: 4, vertical: 2), // Minimal padding around the text
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(4), // Gives it a rounded shape
