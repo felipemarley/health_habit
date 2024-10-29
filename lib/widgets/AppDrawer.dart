@@ -3,6 +3,36 @@ import 'package:flutter/material.dart';
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
+  void _confirmLogout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirmação"),
+          content: const Text("Deseja mesmo sair?"),
+          actions: [
+            TextButton(
+              child: const Text("Cancelar"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Sair"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/',
+                  (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -14,8 +44,8 @@ class AppDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blueAccent,
             ),
-            accountName: Text('Nome do Usuário'),
-            accountEmail: Text('usuario@email.com'),
+            accountName: Text('Jean Lima'),
+            accountEmail: Text('jeanmmlima@email.com'),
             currentAccountPicture: CircleAvatar(
               backgroundImage: NetworkImage(
                   'https://via.placeholder.com/150'), // Imagem fictícia
@@ -47,9 +77,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () {
-              // Função de logout
-            },
+            onTap: () => _confirmLogout(context),
           ),
         ],
       ),
