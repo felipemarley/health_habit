@@ -75,7 +75,7 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
       children: <Widget>[
         Text(
           formatTime(secondsRemaining),
-          style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         const SizedBox(height: 24),
         Row(

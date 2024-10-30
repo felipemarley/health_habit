@@ -87,6 +87,8 @@ class _PickCategoryScreenState extends State<PickCategoryScreen> {
                               style: TextStyle(
                                 color: isSelected ? Colors.white : Colors.black,
                               ),
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
                             ),
                           ],
                         ),

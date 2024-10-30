@@ -41,7 +41,7 @@ final List<Activity> activities = [
   Habit(
     name: "Prática de Yoga",
     description: "Fazer yoga todas as manhãs para melhorar a flexibilidade e reduzir o estresse",
-    category: CategoryConstants.task,
+    category: CategoryConstants.chill,
     startDate: randomStartDate()
   ),
   Task(
@@ -65,7 +65,7 @@ final List<Activity> activities = [
   Habit(
     name: "Hidratação",
     description: "Beber ao menos 2 litros de água todos os dias",
-    category: CategoryConstants.task,
+    category: CategoryConstants.gym,
     startDate: randomStartDate()
   ),
   Task(
@@ -77,7 +77,7 @@ final List<Activity> activities = [
   Habit(
     name: "Jardinagem",
     description: "Cuidar do jardim todas as tardes, regando e podando as plantas",
-    category: CategoryConstants.task,
+    category: CategoryConstants.chill,
     startDate: randomStartDate()
   ),
   Task(

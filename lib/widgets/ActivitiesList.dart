@@ -82,10 +82,10 @@ class _ActivitiesListState extends State<ActivitiesList> {
                   });
             },
             child: ListTile(
-              leading: const CategoryIconBadge(
+              leading: CategoryIconBadge(
                   badgeText: 'teste',
                   backgroundColor: Colors.blue,
-                  icon: Icon(Icons.abc)),
+                  icon: _filteredActivities[index].category.icon),
               title: Text(_filteredActivities[index].name),
               subtitle: _filteredActivities[index] is Task
                   ? const Align(

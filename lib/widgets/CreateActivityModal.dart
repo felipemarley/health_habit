@@ -77,9 +77,9 @@ class ModalOption extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                       ),
-                      Text(description),
+                      Text(description, style: TextStyle(color: Colors.black),),
                     ],
                   ),
                 ),
