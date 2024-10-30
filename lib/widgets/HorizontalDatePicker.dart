@@ -25,7 +25,7 @@ class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
       children: List.generate(7, (index) {
         return Expanded(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 4), // Add horizontal margin
+            margin: EdgeInsets.symmetric(horizontal: 1), // Add horizontal margin
             child: DateItem(
               durationToAdd: index - 3,
               selected: _selectedIndex == index,
