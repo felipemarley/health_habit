@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_habit/widgets/ActivitiesList.dart';
 import 'package:health_habit/widgets/AppDrawer.dart';
 import 'package:health_habit/widgets/CreateActivityModal.dart';
+import 'package:health_habit/screens/pomodoro_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,8 +16,7 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> _screens = [
     ActivitiesList(),
-    const Text('Hábitos'),
-    const Text('Tarefas'),
+    PomodoroScreen(),
   ];
 
   void _onBottomMenuItemTap(int index) {
@@ -50,12 +50,8 @@ class _MainScreenState extends State<MainScreen> {
               label: 'Hoje',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.restart_alt),
-              label: 'Hábitos',
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.task_alt),
-              label: 'Tarefas',
+              icon: Icon(Icons.timer),
+              label: 'Pomodoro',
               backgroundColor: Colors.blue),
         ],
       ),
